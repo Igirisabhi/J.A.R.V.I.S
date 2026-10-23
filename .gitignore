@@ -1,0 +1,16 @@
+﻿.venv/
+.ttsenv/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+runtime/
+voice/interrupts/
+voice/recordings/
+jarvis.pid
+*.log
+models/kokoro/
+build/
+dist/

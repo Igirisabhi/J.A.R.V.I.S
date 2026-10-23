@@ -1,0 +1,53 @@
+================================================================================
+          JARVIS SETTINGS GUIDE (CPU / GPU & AUDIO)
+================================================================================
+
+The master file where you control CPU/GPU and audio parameters is:
+
+    config/settings.json
+
+Open 'config/settings.json' in any text editor to customize the settings below.
+
+
+================================================================================
+1. CPU vs GPU SETTINGS (Speech Recognition)
+================================================================================
+Located under "speech" -> "local":
+
+  "speech": {
+    "local": {
+      "model": "base",
+      "device": "cpu",            <--- Change "cpu" to "cuda" to use your NVIDIA GPU
+      "compute_type": "int8",     <--- Use "float16" for GPU, or "int8" for CPU
+      "cpu_threads": 4,           <--- Number of CPU threads (1 to 16)
+      ...
+    }
+  }
+
+Options for "device":
+  - "cpu"   : Standard CPU processing (works on every PC)
+  - "cuda"  : Uses your dedicated NVIDIA GPU (faster offline transcription)
+  - "auto"  : Automatically detects if NVIDIA CUDA is available
+
+Options for "compute_type":
+  - "int8"           : Best for CPU (low RAM & CPU usage)
+  - "float16"        : Best for NVIDIA GPU
+  - "int8_float16"   : Balanced GPU mode
+
+
+================================================================================
+3. AUDIO & VOICE LOUDNESS
+================================================================================
+Located under "audio":
+
+  "audio": {
+    "tts_volume": 0.40,                         <--- Jarvis speech loudness (0.0 to 1.0)
+    "silence_duration_seconds": 0.65            <--- How quickly Jarvis stops recording when you pause
+  }
+
+
+NOTE: Valid settings.json edits reload while Jarvis is running. Add voice mishearings to config/command_corrections.json; those aliases are picked up on the next utterance.
+Jarvis uses the microphone selected as the Windows default input. Change the
+default input in Windows Sound settings to switch between the PC microphone
+and a headset microphone; Jarvis does not select a device or Bluetooth mode.
+================================================================================

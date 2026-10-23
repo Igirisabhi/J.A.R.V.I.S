@@ -1,0 +1,15 @@
+{
+  "accent_color": "#00E5FF",
+  "motion_enabled": true,
+  "rotation_enabled": true,
+  "orbit_radius_vmin": 44,
+  "rotation_speed_degrees_per_second": 12,
+  "motion_fps": 6,
+  "particle_count": 0,
+  "telemetry_interval_ms": 2500,
+  "scanlines_enabled": true,
+  "blur_px": 24,
+  "dim_opacity": 0.65,
+  "click_pass_through": true,
+  "ui_scale": 1
+}

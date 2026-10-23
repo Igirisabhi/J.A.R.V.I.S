@@ -1,0 +1,21 @@
+google-genai>=2.25.0
+groq>=1.7.0
+faster-whisper>=1.1.0
+# faster-whisper currently passes metadata_errors to av.open; PyAV 19 removed it.
+av>=11,<19
+openwakeword>=0.6.0
+mediapipe>=1.0.1
+sounddevice>=0.5.6
+soundfile>=0.14.0
+numpy>=2.0.0
+onnxruntime>=1.20.0
+pyautogui>=0.9.54
+pyperclip>=1.11.0
+pywin32>=312
+python-dotenv>=1.0.0
+httpx>=0.28.0
+yt-dlp>=2026.8.0
+PySide6>=6.7
+playwright>=1.40.0
+rapidfuzz>=3.0.0
+jellyfish>=1.0.0

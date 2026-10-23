@@ -1,0 +1,31 @@
+name: Jarvis CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest bandit pip-audit
+      - name: Run tests
+        run: python -m pytest -q tests
+      - name: Compile Python
+        run: python -m compileall -q core tools voice ui tests main.py tts_worker.py
+      - name: Validate JSON configuration
+        shell: pwsh
+        run: |
+          $files = @("config/settings.json", "config/ui_settings.json", "config/gesture_settings.json", "config/command_corrections.json", "aliases.json")
+          foreach ($file in $files) {
+            Get-Content $file -Raw | ConvertFrom-Json | Out-Null
+          }
+      - name: Dependency compatibility
+        run: python -m pip check
+      - name: Security scan
+        run: bandit -q -r core tools voice ui main.py; pip-audit -r requirements.txt
